@@ -6,8 +6,12 @@ import 'package:restaurant_app2/components/helper/keyboard.dart';
 import 'package:restaurant_app2/screens/constants.dart';
 import 'package:restaurant_app2/screens/login_register/forgot_password/fotgotPassword.dart';
 import 'package:restaurant_app2/screens/login_register/login/login_success/login_success.dart';
-
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+import 'dart:async';
 import '../../../size_config.dart';
+import 'package:json_annotation/json_annotation.dart';
+import 'package:json_serializable/json_serializable.dart';
 
 class LoginForm extends StatefulWidget {
   @override
@@ -76,15 +80,47 @@ class _LoginFormState extends State<LoginForm> {
           SizedBox(height: getProportionateScreenHeight(20)),
           DefaultButton(
             text: "Continue",
-            press: () {
+            press: () async {
               if (_formKey.currentState.validate()) {
                 _formKey.currentState.save();
                 // if all are valid then go to success screen
                 KeyboardUtil.hideKeyboard(context);
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => LoginSuccessScreen()));
+
+                final response = await http.post(
+                  Uri.parse(
+                      'https://rocky-thicket-73738.herokuapp.com/api/auth/login'),
+                  headers: <String, String>{
+                    'Content-Type': 'application/json; charset=UTF-8',
+                    'X-Requested-With': 'XMLHttpRequest',
+                  },
+                  body: jsonEncode({
+                    "email": email,
+                    "password": password,
+                    "remember_me": remember
+                  }),
+                );
+
+                print(response.statusCode);
+                if (response.statusCode == 200) {
+                  // print(jsonDecode(response.body).runtimeType);
+                  Map<String, dynamic> value = jsonDecode(response.body);
+                  var token = Access_token.fromJson(value);
+
+                  // print('Howdy, ${token.access_token}!');
+                  // print('We sent the verification link to ${token.token_type}.');
+                  print('${token.token_type} ${token.access_token}');
+
+                  // Navigator.push(
+                  //     context,
+                  //     MaterialPageRoute(
+                  //         builder: (context) => LoginSuccessScreen()));
+                } else {
+                  // If the server did not return a 201 CREATED response,
+                  // then throw an exception.
+                  print("Failed login");
+                  // print(jsonDecode(response.body));
+                  // throw Exception('Failed to create album.');
+                }
               }
             },
           ),
@@ -159,3 +195,29 @@ class _LoginFormState extends State<LoginForm> {
     );
   }
 }
+
+// Class
+class Access_token {
+  final String access_token;
+  final String token_type;
+
+  Access_token(this.access_token, this.token_type);
+
+  Access_token.fromJson(Map<String, dynamic> json)
+      : access_token = json['access_token'],
+        token_type = json['token_type'];
+
+  Map<String, dynamic> toJson() => {
+        'access_token': access_token,
+        'token_type': token_type,
+      };
+}
+
+// @JsonSerializable()
+// class Token {
+//   final String access_token;
+//   final String token_type;
+//   Token({this.access_token,  this.token_type});
+//   factory Token.fromJson(Map<String, dynamic> json) => _$TokenFromJson(json);
+//   Map<String, dynamic> toJson() => _$TokenonToJson(this);
+// }
