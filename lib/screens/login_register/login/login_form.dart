@@ -117,7 +117,7 @@ class _LoginFormState extends State<LoginForm> {
                 } else {
                   // If the server did not return a 201 CREATED response,
                   // then throw an exception.
-                  print("Failed login");
+                  print("Failed login G");
                   // print(jsonDecode(response.body));
                   // throw Exception('Failed to create album.');
                 }
