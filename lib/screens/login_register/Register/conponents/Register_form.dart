@@ -7,6 +7,8 @@ import 'package:restaurant_app2/components/helper/keyboard.dart';
 import 'package:restaurant_app2/screens/HomeScreen/HomeScreen.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'dart:async';
+import 'package:json_annotation/json_annotation.dart';
 
 import '../../../../size_config.dart';
 import '../../../constants.dart';
@@ -66,10 +68,41 @@ class _RegisterFormState extends State<RegisterForm> {
           SizedBox(height: getProportionateScreenHeight(40)),
           DefaultButton(
             text: "สมัครสมาชิก",
-            press: () {
+            press: () async {
               if (_formKey.currentState.validate()) {
                 _formKey.currentState.save();
                 KeyboardUtil.hideKeyboard(context);
+
+                final response = await http.post(
+                  Uri.parse(
+                      'https://rocky-thicket-73738.herokuapp.com/api/auth/signup'),
+                  headers: <String, String>{
+                    'Content-Type': 'application/json; charset=UTF-8',
+                    'X-Requested-With': 'XMLHttpRequest',
+                  },
+                  body: jsonEncode({
+                    "username": Username,
+                    "firstname": firstName,
+                    "lastname": lastName,
+                    "phone_number": phoneNumber,
+                    "email": email,
+                    "password": password,
+                    "password_confirmation": conform_password,
+                    "is_customer": true
+                  }),
+                );
+
+                print(response.statusCode);
+                if (response.statusCode == 200) {
+                  // If the server did return a 201 CREATED response,
+                  // then parse the JSON.
+                  print(jsonDecode(response.body));
+                } else {
+                  // If the server did not return a 201 CREATED response,
+                  // then throw an exception.
+                  throw Exception('Failed to create album.');
+                }
+
                 // String Username;
                 // String firstName;
                 // String lastName;
@@ -78,30 +111,32 @@ class _RegisterFormState extends State<RegisterForm> {
                 // String password;
                 // String conform_password;
                 // bool remember = false;
-                
+
                 // var headers = {
                 //   'Content-Type': 'application/json',
                 //   'X-Requested-With': 'XMLHttpRequest'
                 // };
-                // var request = http.Request('POST', Uri.parse('http://rocky-thicket-73738.herokuapp.com/api/auth/signup'));
+                // var request = http.Request(
+                //     'POST',
+                //     Uri.parse(
+                //         'http://rocky-thicket-73738.herokuapp.com/api/auth/signup'));
                 // request.body = json.encode({
-                //   "username": "apichatchadaporn",
-                //   "firstname": "chatchadaporn",
-                //   "lastname": "noivichai",
-                //   "phone_number": "0947840911",
-                //   "email": "apichatchadaporn@gmail.com",
-                //   "password": "2212Game",
-                //   "password_confirmation": "2212Game",
+                //   "username": Username,
+                //   "firstname": firstName,
+                //   "lastname": lastName,
+                //   "phone_number": phoneNumber,
+                //   "email": email,
+                //   "password": password,
+                //   "password_confirmation": conform_password,
                 //   "is_customer": true
                 // });
                 // request.headers.addAll(headers);
-
-                // http.StreamedResponse response = request.send();
+                // print(request.body);
+                // http.StreamedResponse response = await request.send();
 
                 // if (response.statusCode == 200) {
-                //   print(response.stream.bytesToString());
-                // }
-                // else {
+                //   print(await response.stream.bytesToString());
+                // } else {
                 //   print(response.reasonPhrase);
                 // }
 
