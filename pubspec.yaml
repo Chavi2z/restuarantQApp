@@ -33,7 +33,6 @@ dependencies:
   smooth_star_rating: ^1.0.4
   http: ^0.13.3
   json_annotation: ^4.0.1
-  json_serializable: ^4.1.4
 
 dev_dependencies:
   flutter_test:

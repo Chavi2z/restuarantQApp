@@ -11,7 +11,6 @@ import 'dart:convert';
 import 'dart:async';
 import '../../../size_config.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:json_serializable/json_serializable.dart';
 
 class LoginForm extends StatefulWidget {
   @override
