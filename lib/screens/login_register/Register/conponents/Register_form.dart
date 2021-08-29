@@ -67,7 +67,7 @@ class _RegisterFormState extends State<RegisterForm> {
           FormError(errors: errors),
           SizedBox(height: getProportionateScreenHeight(40)),
           DefaultButton(
-            text: "สมัครสมาชิก",
+            text: "Register",
             press: () async {
               if (_formKey.currentState.validate()) {
                 _formKey.currentState.save();
