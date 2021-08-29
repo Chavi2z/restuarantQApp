@@ -16,10 +16,10 @@ class Body extends StatelessWidget {
             child: Column(
               children: [
                 SizedBox(height: SizeConfig.screenHeight * 0.04),
-                Image(
-                  image: AssetImage("assets/images/logoname.png"),
-                  height: 100.0,
-                ),
+                // Image(
+                //   image: AssetImage("assets/images/logoname.png"),
+                //   height: 100.0,
+                // ),
                 Text(
                   "Welcome",
                   style: TextStyle(
