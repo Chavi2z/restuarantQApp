@@ -3,6 +3,7 @@ import 'package:restaurant_app2/components/coutom_surfix_icon.dart';
 import 'package:restaurant_app2/components/default_button.dart';
 import 'package:restaurant_app2/components/form_error.dart';
 import 'package:restaurant_app2/components/helper/keyboard.dart';
+import 'package:restaurant_app2/screens/HomeScreen/HomeScreen.dart';
 import 'package:restaurant_app2/screens/constants.dart';
 import 'package:restaurant_app2/screens/login_register/forgot_password/fotgotPassword.dart';
 import 'package:restaurant_app2/screens/login_register/login/login_success/login_success.dart';
@@ -11,6 +12,8 @@ import 'dart:convert';
 import 'dart:async';
 import '../../../size_config.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:restaurant_app2/model/Token.dart';
 
 class LoginForm extends StatefulWidget {
   @override
@@ -22,6 +25,7 @@ class _LoginFormState extends State<LoginForm> {
   String email;
   String password;
   bool remember = false;
+
   final List<String> errors = [];
 
   void addError({String error}) {
@@ -78,7 +82,7 @@ class _LoginFormState extends State<LoginForm> {
           FormError(errors: errors),
           SizedBox(height: getProportionateScreenHeight(20)),
           DefaultButton(
-            text: "Continue",
+            text: "Login",
             press: () async {
               if (_formKey.currentState.validate()) {
                 _formKey.currentState.save();
@@ -103,11 +107,23 @@ class _LoginFormState extends State<LoginForm> {
                 if (response.statusCode == 200) {
                   // print(jsonDecode(response.body).runtimeType);
                   Map<String, dynamic> value = jsonDecode(response.body);
-                  var token = Access_token.fromJson(value);
 
-                  // print('Howdy, ${token.access_token}!');
-                  // print('We sent the verification link to ${token.token_type}.');
-                  print('${token.token_type} ${token.access_token}');
+                  var token = Access_token.fromJson(value);
+                  String accesstoken =
+                      "${token.token_type} ${token.access_token}";
+
+                  // print('${token.token_type} ${token.access_token}');
+
+                  // SharedPreferences prefs =
+                  //     await SharedPreferences.getInstance();
+                  // await prefs.setString('tokenString','${token.token_type} ${token.access_token}');
+
+                  // print(prefs.getString('tokenString'));
+
+                  // Access_token.access_token = x;
+
+                  // Navigator.of(context).pushReplacement(
+                  //     MaterialPageRoute(builder: (context, arguments: Access_token_send(accesstoken)) => HomeScreen()));
 
                   // Navigator.push(
                   //     context,
@@ -196,21 +212,21 @@ class _LoginFormState extends State<LoginForm> {
 }
 
 // Class
-class Access_token {
-  final String access_token;
-  final String token_type;
+// class Access_token {
+//   final String access_token;
+//   final String token_type;
 
-  Access_token(this.access_token, this.token_type);
+//   Access_token(this.access_token, this.token_type);
 
-  Access_token.fromJson(Map<String, dynamic> json)
-      : access_token = json['access_token'],
-        token_type = json['token_type'];
+//   Access_token.fromJson(Map<String, dynamic> json)
+//       : access_token = json['access_token'],
+//         token_type = json['token_type'];
 
-  Map<String, dynamic> toJson() => {
-        'access_token': access_token,
-        'token_type': token_type,
-      };
-}
+//   Map<String, dynamic> toJson() => {
+//         'access_token': access_token,
+//         'token_type': token_type,
+//       };
+// }
 
 // @JsonSerializable()
 // class Token {

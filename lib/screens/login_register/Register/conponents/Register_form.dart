@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:restaurant_app2/complete_profile/complete_profile_screen.dart';
 import 'package:restaurant_app2/components/coutom_surfix_icon.dart';
 import 'package:restaurant_app2/components/default_button.dart';
 import 'package:restaurant_app2/components/form_error.dart';
@@ -8,7 +7,7 @@ import 'package:restaurant_app2/screens/HomeScreen/HomeScreen.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'dart:async';
-import 'package:json_annotation/json_annotation.dart';
+import 'package:restaurant_app2/screens/login_register/login/screen_login.dart';
 
 import '../../../../size_config.dart';
 import '../../../constants.dart';
@@ -99,7 +98,7 @@ class _RegisterFormState extends State<RegisterForm> {
                   print(jsonDecode(response.body));
                 } else {
                   // If the server did not return a 201 CREATED response,
-                  // then throw an exception.
+                  // then throw an exceptio*/n.
                   throw Exception('Failed to create');
                 }
 
@@ -140,10 +139,8 @@ class _RegisterFormState extends State<RegisterForm> {
                 //   print(response.reasonPhrase);
                 // }
 
-                // Navigator.push(
-                //     context,
-                //     MaterialPageRoute(
-                //         builder: (context) => CompleteProfileScreen()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => LoginScreen()));
               }
             },
           ),
