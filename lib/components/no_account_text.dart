@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:restaurant_app2/screens/constants.dart';
-import 'package:restaurant_app2/screens/login_register/Register/screen_register.dart';
+import 'package:restaurant_app2/Register/screen_register.dart';
+import 'package:restaurant_app2/widgets/constants.dart';
 
-import '../size_config.dart';
+
+import '../widgets/size_config.dart';
 
 class NoAccountText extends StatelessWidget {
   const NoAccountText({

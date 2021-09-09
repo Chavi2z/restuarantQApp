@@ -1,18 +1,24 @@
 import 'package:flutter/material.dart';
+import 'dart:async';
 import 'package:flutter_svg/svg.dart';
-import 'package:restaurant_app2/Restuarant/Thai_food/thai_food.dart';
+
 import 'package:restaurant_app2/components/coustom_bottom_nav_bar.dart';
-import 'package:restaurant_app2/detailFood/detailFood.dart';
+
 import 'package:restaurant_app2/enums.dart';
-//import 'package:restaurant_app2/screens/widgets/ListRestAll.dart';
+
 import 'package:restaurant_app2/screens/HomeScreen/component/SearchRest.dart';
 import 'package:restaurant_app2/screens/HomeScreen/component/appBar.dart';
 import 'package:restaurant_app2/screens/HomeScreen/component/popular_food.dart';
 import 'package:restaurant_app2/screens/Profile/Profile.dart';
-import 'package:restaurant_app2/screens/widgets/colors.dart';
+
 import 'package:restaurant_app2/screens/HomeScreen/component/foodList.dart';
-import 'package:restaurant_app2/screens/widgets/style.dart';
-import 'package:restaurant_app2/model/Token.dart';
+
+import 'package:restaurant_app2/model/json/Token.dart';
+import 'package:restaurant_app2/model/PreferencesData.dart';
+import 'package:restaurant_app2/screens/Restuarant/Thai_food/thai_food.dart';
+import 'package:restaurant_app2/widgets/colors.dart';
+import 'package:restaurant_app2/widgets/style.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeScreen extends StatefulWidget {
   static String routeName = "/home";
@@ -22,6 +28,15 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int selectedFoodCard = 0;
+  String token;
+
+  Future<void> initStateAsync() async {
+    print("do initStateAsync");
+    this.token = await MySharedPreferences.instance.getStringValue('token');
+    print("token : ");
+    print(this.token);
+  }
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -55,7 +70,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       style: Theme.of(context)
                           .textTheme
                           .display1
-                          .copyWith(fontWeight: FontWeight.w900),
+                          .copyWith(fontWeight: FontWeight.w700),
                     ),
                     SearchBar(),
                     Padding(

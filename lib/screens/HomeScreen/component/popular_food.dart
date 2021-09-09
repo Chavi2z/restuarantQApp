@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:restaurant_app2/components/Food_card.dart';
+import 'package:restaurant_app2/screens/HomeScreen/component/Food_card.dart';
 import 'package:restaurant_app2/model/Restuarant.dart';
 import 'package:restaurant_app2/screens/HomeScreen/component/section_title.dart';
 
-import '../../../size_config.dart';
+import '../../../widgets/size_config.dart';
 
 class PopularFood extends StatelessWidget {
   @override

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:restaurant_app2/constants.dart';
+import 'package:restaurant_app2/widgets/constants.dart';
+
 
 class SearchBox extends StatelessWidget {
   final ValueChanged<String> onChanged;

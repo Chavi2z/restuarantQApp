@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:restaurant_app2/screens/login_register/auth_screen.dart';
+import 'package:restaurant_app2/Auth/auth_screen.dart';
+
 
 void main() {
   runApp(MyApp());
