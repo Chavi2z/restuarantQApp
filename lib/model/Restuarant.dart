@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class Product {
-  final int id;
-  final String title, description;
-  final List<String> images;
-  final bool isFavourite, isPopular;
+   int id;
+   String title, description;
+   List<String> images;
+   bool isFavourite, isPopular;
 
   Product({
     @required this.id,
@@ -14,7 +14,18 @@ class Product {
     @required this.title,
     @required this.description,
   });
+
+  //   factory Product.fromJson(Map<String,dynamic> json){
+  //   Product c = Product();
+  //   c.id = json['id'];
+  //   c.title = json['title'];
+  //   c.description = json['description'];
+  //   c.images = json['image'];
+  //   return c;
+  // }
 }
+
+
 
 // Our demo Products
 

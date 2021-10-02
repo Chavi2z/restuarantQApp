@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:restaurant_app2/widgets/constants.dart';
 
-
-
 class WaitButton extends StatelessWidget {
   const WaitButton({
     Key key,
@@ -18,11 +16,12 @@ class WaitButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       // padding: EdgeInsets.all(20),
-      width: size.width * 0.5,
+      width: size.width * 0.3,
+      height: 60,
       // it will cover 80% of total width
       decoration: BoxDecoration(
-        color: kPrimaryColor,
-        borderRadius: BorderRadius.circular(80),
+        color: ksecondaryColor,
+        borderRadius: BorderRadius.circular(20),
       ),
 
       child: Material(
@@ -34,11 +33,10 @@ class WaitButton extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                //Icon(Icons.audiotrack),
                 SvgPicture.asset("assets/icons/hourglass.svg"),
                 SizedBox(width: 10),
                 Text(
-                  "รออีก",
+                  "1 คิว",
                   style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,

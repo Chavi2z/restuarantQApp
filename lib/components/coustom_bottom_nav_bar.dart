@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:restaurant_app2/screens/HomeScreen/HomeScreen.dart';
-import 'package:restaurant_app2/screens/Profile/Profile.dart';
-import 'package:restaurant_app2/screens/Queue/ArriveQueue.dart';
+import 'package:restaurant_app2/screens/Profile/profile.dart';
+import 'package:restaurant_app2/screens/Queue/arriveQ/ArriveQueue.dart';
 import 'package:restaurant_app2/widgets/constants.dart';
 
 import '../enums.dart';

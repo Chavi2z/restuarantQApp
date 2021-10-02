@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:restaurant_app2/components/coustom_bottom_nav_bar.dart';
-import 'package:restaurant_app2/enums.dart';
-import 'package:restaurant_app2/screens/Profile/components/body.dart';
+import 'package:restaurant_app2/screens/Profile/component/profile_body.dart';
+
+import '../../enums.dart';
+
 
 class Profile extends StatefulWidget {
   @override

@@ -1,27 +1,27 @@
 const foodCategoryList = [
   {
-    'imagePath': 'assets/bottomBar/home.svg',
+    'imagePath': 'assets/icons/thF.svg',
     'name': 'Thai',
   },
   {
-    'imagePath': 'assets/bottomBar/home.svg',
+    'imagePath': 'assets/icons/jF.svg',
     'name': 'Japan',
   },
   {
-    'imagePath': 'assets/bottomBar/home.svg',
+    'imagePath': 'assets/icons/itaF.svg',
     'name': 'Italian',
   },
   {
-    'imagePath': 'assets/bottomBar/home.svg',
+    'imagePath': 'assets/icons/kF.svg',
     'name': 'Korean',
   },
   {
-    'imagePath': 'assets/bottomBar/home.svg',
+    'imagePath': 'assets/icons/chF.svg',
     'name': 'Chinese',
   },
   {
-    'imagePath': 'assets/bottomBar/home.svg',
-    'name': 'Indian',
+    'imagePath': 'assets/icons/fastF.svg',
+    'name': 'Fastfood',
   },
 ];
 

@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:restaurant_app2/widgets/constants.dart';
 
-
-
 class BookingButton extends StatelessWidget {
   const BookingButton({
     Key key,
@@ -18,11 +16,11 @@ class BookingButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       // padding: EdgeInsets.all(20),
-      width: size.width * 0.9,
+      width: size.width * 0.8,
       // it will cover 80% of total width
       decoration: BoxDecoration(
         color: kDarkblueColor,
-        borderRadius: BorderRadius.circular(80),
+        borderRadius: BorderRadius.circular(20),
       ),
       child: Material(
         color: Colors.transparent,
@@ -33,8 +31,6 @@ class BookingButton extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                // SvgPicture.asset("assets/icons/bag.svg"),
-                // SizedBox(width: 10),
                 Text(
                   "จองคิว",
                   style: TextStyle(

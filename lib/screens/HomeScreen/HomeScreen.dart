@@ -1,24 +1,19 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:flutter_svg/svg.dart';
-
 import 'package:restaurant_app2/components/coustom_bottom_nav_bar.dart';
-
 import 'package:restaurant_app2/enums.dart';
-
+import 'package:restaurant_app2/screens/Food_List/Thai_food/thai_food.dart';
+import 'package:restaurant_app2/screens/HomeScreen/component/Features.dart';
 import 'package:restaurant_app2/screens/HomeScreen/component/SearchRest.dart';
 import 'package:restaurant_app2/screens/HomeScreen/component/appBar.dart';
-import 'package:restaurant_app2/screens/HomeScreen/component/popular_food.dart';
-import 'package:restaurant_app2/screens/Profile/Profile.dart';
-
 import 'package:restaurant_app2/screens/HomeScreen/component/foodList.dart';
+import 'package:restaurant_app2/screens/HomeScreen/component/section_title.dart';
 
-import 'package:restaurant_app2/model/json/Token.dart';
-import 'package:restaurant_app2/model/PreferencesData.dart';
-import 'package:restaurant_app2/screens/Restuarant/Thai_food/thai_food.dart';
+// import 'package:restaurant_app2/screens/Restuarant/Thai_food/thai_food.dart';
 import 'package:restaurant_app2/widgets/colors.dart';
+import 'package:restaurant_app2/widgets/size_config.dart';
 import 'package:restaurant_app2/widgets/style.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeScreen extends StatefulWidget {
   static String routeName = "/home";
@@ -28,14 +23,6 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int selectedFoodCard = 0;
-  String token;
-
-  Future<void> initStateAsync() async {
-    print("do initStateAsync");
-    this.token = await MySharedPreferences.instance.getStringValue('token');
-    print("token : ");
-    print(this.token);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -56,14 +43,17 @@ class _HomeScreenState extends State<HomeScreen> {
                       alignment: Alignment.topLeft,
                       child: Container(
                         alignment: Alignment.center,
-                        height: 52,
-                        width: 52,
+                        height: 60,
+                        width: 60,
                         decoration: BoxDecoration(
                           color: Color(0xFF3961ab),
                           shape: BoxShape.circle,
                         ),
                         // child: SvgPicture.asset("assets/icons/noti.svg"),
                       ),
+                    ),
+                    SizedBox(
+                      height: 10.0,
                     ),
                     Text(
                       "Welcome \nChatchadaporn",
@@ -96,7 +86,14 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ),
                     ),
-                    PopularFood(),
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: getProportionateScreenWidth(20)),
+                      child: SectionTitle(
+                          title: "Popular Restuarent", press: () {}),
+                    ),
+                    ShowProduct(),
+                    // PopularFood(),
                   ],
                 ),
               ),
@@ -119,7 +116,7 @@ class _HomeScreenState extends State<HomeScreen> {
       },
       child: Container(
         margin: EdgeInsets.only(right: 20, top: 20, bottom: 20),
-        padding: EdgeInsets.symmetric(vertical: 30, horizontal: 20),
+        padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
             color:
@@ -132,7 +129,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ]),
         child: SingleChildScrollView(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SvgPicture.asset(imagePath, width: 50, color: Colors.black),
               PrimaryText(

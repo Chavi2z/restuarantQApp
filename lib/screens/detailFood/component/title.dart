@@ -47,7 +47,6 @@ class TitlePriceRating extends StatelessWidget {
               ],
             ),
           ),
-          //priceTag(context, price: price),
         ],
       ),
     );

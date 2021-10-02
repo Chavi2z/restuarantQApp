@@ -5,15 +5,12 @@ import 'package:restaurant_app2/components/form_error.dart';
 import 'package:restaurant_app2/components/helper/keyboard.dart';
 import 'package:restaurant_app2/components/normol_dialog.dart';
 import 'package:restaurant_app2/forgot_password/fotgotPassword.dart';
-import 'package:restaurant_app2/model/access_Token.dart';
 import 'package:restaurant_app2/screens/HomeScreen/HomeScreen.dart';
-
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'dart:async';
-
 import 'package:json_annotation/json_annotation.dart';
-import 'package:restaurant_app2/model/PreferencesData.dart';
+import 'package:restaurant_app2/model/json/PreferencesData.dart';
 import 'package:restaurant_app2/model/json/Token.dart';
 import 'package:restaurant_app2/widgets/constants.dart';
 import 'package:restaurant_app2/widgets/size_config.dart';
@@ -117,6 +114,7 @@ class _LoginFormState extends State<LoginForm> {
         var token = Access_token.fromJson(value);
         String accesstoken = "${token.token_type} ${token.access_token}";
         print(accesstoken);
+        
         MySharedPreferences.instance.setStringValue("token", accesstoken);
 
         Navigator.push(

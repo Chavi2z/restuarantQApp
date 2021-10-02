@@ -10,6 +10,7 @@ const kTextLightColor = Color(0xFF6A727D);
 const kBackgroundColor = Color(0xFFF8F8F8);
 const kblueColor = Color(0xFF517EC3);
 const kDarkblueColor = Color(0xFF3368B9);
+const kGreenColor = Color(0xFF1CDB2F);
 
 
 const kActiveIconColor = Color(0xFFE68342);

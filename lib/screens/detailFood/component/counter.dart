@@ -1,0 +1,91 @@
+import 'package:flutter/material.dart';
+
+class CounterDesign extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return _CounterDesign();
+  }
+}
+
+class _CounterDesign extends State<CounterDesign> {
+  int _n = 0;
+  int _amt = 0;
+  void add() {
+    setState(() {
+      _n++;
+      _amt = _amt + 10;
+    });
+  }
+
+  void minus() {
+    setState(() {
+      if (_n != 0) _n--;
+      _amt = _amt - 10;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: <Widget>[
+        Container(
+          width: 210.0,
+          height: 60,
+          decoration: BoxDecoration(
+            color: Colors.blue[100],
+            borderRadius: BorderRadius.circular(20.0),
+          ),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: <Widget>[
+              // SizedBox(
+              //   width: 10.0,
+              // ),
+              new IconButton(
+                icon: const Icon(
+                  Icons.remove,
+                  color: Colors.black,
+                ),
+                onPressed: () {
+                  minus();
+                },
+              ),
+              SizedBox(
+                width: 20.0,
+              ),
+              new Text('$_n', style: new TextStyle(fontSize: 30.0)),
+              SizedBox(
+                width: 20.0,
+              ),
+              new IconButton(
+                icon: const Icon(
+                  Icons.add,
+                  color: Colors.black,
+                ),
+                onPressed: () {
+                  add();
+                },
+              ),
+              SizedBox(
+                width: 20.0,
+              ),
+            ],
+          ),
+        ),
+        // SizedBox(
+        //   width: 100.0,
+        // ),
+        // Container(
+        //     child: Text(
+        //   'Rs $_amt',
+        //   style: TextStyle(
+        //     fontWeight: FontWeight.bold,
+        //     fontSize: 30.0,
+        //   ),
+        // )),
+      ],
+    );
+  }
+}

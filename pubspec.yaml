@@ -37,6 +37,10 @@ dependencies:
   sqflite: ^2.0.0+4
   shared_preferences: ^2.0.7
   provider: ^6.0.0
+  flutter_ticket_widget: ^0.0.1
+  custom_switch: ^0.0.1
+  flutter_toggle_tab: ^1.1.7
+  animations: ^2.0.1
 
 dev_dependencies:
   flutter_test:
